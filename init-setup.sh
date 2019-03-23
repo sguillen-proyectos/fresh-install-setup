@@ -17,7 +17,7 @@ function error() {
 
 LOG_DIR=/var/log/fresh-debian/
 INSTALL_DIR=/opt/fresh-install-setup
-REPO=https://github.com/sguillen-proyectos/fresh-install-setup.git
+GIT_REPO=https://github.com/sguillen-proyectos/fresh-install-setup.git
 
 function comment_existing_repositories() {
     sed -i.bak 's/^deb/# deb/g' /etc/apt/sources.list
@@ -60,7 +60,7 @@ function basic_setup() {
     install_basic_packages
 
     info "Cloning fresh-install-setup at ${INSTALL_DIR}"
-    git clone ${REPO} ${INSTALL_DIR}
+    git clone "${GIT_REPO}" ${INSTALL_DIR}
 
     info "Installing Ansible in ${INSTALL_DIR}/env"
     install_ansible
