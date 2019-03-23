@@ -16,6 +16,8 @@ function error() {
 }
 
 LOG_DIR=/var/log/fresh-debian/
+INSTALL_DIR=/opt/fresh-install-setup
+REPO=https://github.com/sguillen-proyectos/fresh-install-setup.git
 
 function comment_existing_repositories() {
     sed -i.bak 's/^deb/# deb/g' /etc/apt/sources.list
@@ -29,14 +31,21 @@ function add_debian_repository() {
 }
 
 function install_ansible() {
-    virtualenv /opt/env
-    source /opt/env/bin/activate
+    if [[ ! -d ${INSTALL_DIR} ]]; then
+        error "Cannot find the ${INSTALL_DIR} directory"
+        exit 1
+    fi
+    virtualenv ${INSTALL_DIR}/env
+    source ${INSTALL_DIR}/env/bin/activate
     pip install ansible >> ${LOG_DIR}/ansible.log 2>&1
 }
 
 function install_basic_packages() {
     apt update > ${LOG_DIR}/apt.log 2>&1
-    apt install -y sudo python-pip python-setuptools >> ${LOG_DIR}/apt.log 2>&1
+
+    packages='sudo git python-pip python-setuptools'
+    info "Installing ${packages} ..."
+    apt install -y ${packages} >> ${LOG_DIR}/apt.log 2>&1
 
     pip install virtualenv > ${LOG_DIR}/ansible.log 2>&1
 }
@@ -50,7 +59,10 @@ function basic_setup() {
     info "Installing basic packages"
     install_basic_packages
 
-    info "Installing Ansible"
+    info "Cloning fresh-install-setup at ${INSTALL_DIR}"
+    git clone ${REPO} ${INSTALL_DIR}
+
+    info "Installing Ansible in ${INSTALL_DIR}/env"
     install_ansible
 }
 
