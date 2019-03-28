@@ -1,0 +1,70 @@
+---
+- block:
+  - name: Install must have tools and packages
+    apt:
+      name: "{{ item }}"
+      state: present
+    loop:
+    - build-essential
+    - cmake
+    - vim
+    - curl
+    - dnsutils
+    - firmware-linux-free
+    - firmware-linux-nonfree
+    - firmware-misc-nonfree
+    - linux-headers-amd64
+    - apt-transport-https
+    - ca-certificates
+    - libappindicator1
+    - libappindicator3-1
+    - ffmepeg
+    - tmux
+    - moc
+    - bzip2
+    - zip
+    - tree
+    - unrar
+    - unrar-free
+    - whois
+    - redshift
+    - jq
+    - net-tools
+    - nmap
+
+  - name: Extra tools CLI
+    apt:
+      name: "{{ item }}"
+      state: present
+    loop:
+    - strace
+    - ltrace
+    - itop
+    - htop
+    - atop
+    - ethtool
+    - ipython
+    - nasm
+
+  - name: Must have desktop tools
+    apt:
+      name: "{{ item }}"
+      state: present
+    loop:
+    - file-roller
+    - ghex
+    - gnome-font-viewer
+    - gnome-system-monitor
+    - gparted
+    - guvcview
+    - hardinfo
+    - kazam
+    - kupfer
+    - meld
+    - shutter
+    - transmission
+    - transmission-common
+    - transmission-gtk
+    - wireshark
+    - inkscape
+    - xchm

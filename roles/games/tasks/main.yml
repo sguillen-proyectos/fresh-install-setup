@@ -1,0 +1,14 @@
+---
+- block:
+  - name: Install game-related packages
+      apt:
+        name: "{{ item }}"
+        state: present
+      loop:
+      - armagetronad
+      - dosbox
+      - higan
+      - pcsxr
+      - wine
+      # - wine32
+      - wine64

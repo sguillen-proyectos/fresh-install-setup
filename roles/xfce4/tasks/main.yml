@@ -1,3 +1,18 @@
 # TODO
 # xfce4 panels setup + plugins
 # lightdm login configuration to list users greeter-hide-users=false
+---
+- block:
+  - name: Install themes and icons for desktop configuration
+    apt:
+      name: "{{ item }}"
+      state: present
+    loop:
+    - fonts-hack-ttf
+    - fonts-lyx
+    - fonts-noto
+    - fonts-noto-cjk
+    - fonts-noto-hinted
+    - fonts-noto-unhinted
+    - numix-gtk-theme
+    - numix-icon-theme
