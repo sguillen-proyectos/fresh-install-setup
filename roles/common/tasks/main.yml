@@ -18,7 +18,7 @@
     - ca-certificates
     - libappindicator1
     - libappindicator3-1
-    - ffmepeg
+    - ffmpeg
     - tmux
     - moc
     - bzip2

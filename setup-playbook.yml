@@ -1,0 +1,10 @@
+---
+- hosts: local
+  become: True
+  roles:
+  # - role: common
+  # - role: chrome
+  # - role: games
+  # - role: node
+  # - role: docker
+  - role: php7

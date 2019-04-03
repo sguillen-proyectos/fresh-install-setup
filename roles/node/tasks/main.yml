@@ -1,0 +1,21 @@
+- block:
+  - name: Add NodeJS apt-key
+    apt_key:
+      url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+      state: present
+
+  - name: Add NodeJS repository
+    apt_repository:
+      repo: "deb https://deb.nodesource.com/{{ node_version }} stretch main"
+      filename: nodejs
+
+  - name: Update repositories
+    apt:
+      update_cache: yes
+      cache_valid_time: yes
+
+  - name: Install NodeJS
+    apt:
+      name: nodejs
+      state: present
+

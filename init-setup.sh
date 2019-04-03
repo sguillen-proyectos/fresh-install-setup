@@ -64,6 +64,23 @@ function basic_setup() {
 
     info "Installing Ansible in ${INSTALL_DIR}/env"
     install_ansible
+
+    read -ep 'Add user to sudo group? [yes/no] ' ADD_TO_SUDO
+    if [[ ${ADD_TO_SUDO} == 'yes' ]]; then
+        read -ep 'Type the username to add to sudo group: ' NEW_SUDO_USER
+        gpasswd -a ${NEW_SUDO_USER} sudo
+        if [[ $? == '0' ]]; then
+            info "${NEW_SUDO_USER} added to sudo group"
+            read -ep 'Do you want to reboot before continue? [yes/no] ' REBOOT_COMPUTER
+
+            if [[ ${REBOOT_COMPUTER} == 'yes' ]]; then
+                info "Rebooting machine"
+                reboot
+            fi
+        else
+            error "Could not add ${NEW_SUDO_USER} to sudo group"
+        fi
+    fi
 }
 
 if [[ "${UID}" != '0' ]]; then

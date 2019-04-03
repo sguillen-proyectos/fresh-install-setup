@@ -1,0 +1,22 @@
+- block:
+  # From: https://www.google.com/linuxrepositories/
+  - name: Add Google key to apt
+    apt_key:
+      url: https://dl.google.com/linux/linux_signing_key.pub
+      state: present
+
+  - name: Add Chrome apt repository
+    apt_repository:
+      repo: deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
+      filename: google-chrome
+      state: present
+
+  - name: Update repositories
+    apt:
+      update_cache: yes
+      cache_valid_time: yes
+
+  - name: Install Google Chrome
+    apt:
+      name: google-chrome-stable
+      state: present
