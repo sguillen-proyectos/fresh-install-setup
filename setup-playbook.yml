@@ -10,3 +10,4 @@
   - role: php7
   - role: virtualbox
   - role: vscode
+  - role: xfce4
