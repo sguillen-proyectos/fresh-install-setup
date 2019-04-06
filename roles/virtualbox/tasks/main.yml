@@ -1,0 +1,21 @@
+- block:
+  - name: Add Virtualbox key
+    apt_key:
+      url: https://www.virtualbox.org/download/oracle_vbox_2016.asc
+      state: present
+
+  - name: Add Virtualbox repository
+    apt_repository:
+      repo: deb http://download.virtualbox.org/virtualbox/debian stretch contrib
+      state: present
+      filename: virtualbox
+
+  - name: Update repositories
+    apt:
+      update_cache: yes
+      cache_valid_time: 3600
+
+  - name: Install virtualbox
+    apt:
+      name: virtualbox-5.2
+      state: present
