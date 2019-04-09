@@ -10,4 +10,8 @@
   - role: php7
   - role: virtualbox
   - role: vscode
+
+- hosts: local
+  become: False
+  roles:
   - role: xfce4

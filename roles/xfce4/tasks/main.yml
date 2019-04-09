@@ -21,7 +21,6 @@
     copy:
       src: files/xfce4.zip
       dest: "/home/{{ ansible_user }}/.config/xfce4.zip"
-    become: no
 
   - name: Reload xfce4 settings
     shell: |
@@ -34,4 +33,3 @@
         unzip xfce4.zip
         xfce4-panel -r
       fi
-    become: no

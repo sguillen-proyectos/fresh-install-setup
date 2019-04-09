@@ -16,3 +16,10 @@ wget https://raw.githubusercontent.com/sguillen-proyectos/fresh-install-setup/ma
 `init-setup.sh` script will add the public Debian reposistory to `/etc/apt/sources.list`, install `sudo, python-pip, python-setuptools, virtualenv` and `ansible` inside a virtualenv sandbox. After that it wil clone this repository so you can continue with the setup process.
 
 > **Important:** Never trust `wget,curl | sh,/bin/bash` unless you are sure what the script is doing. Read the code and make sure it is not doing something that could be risky for you :).
+
+
+## TODO
+Add roles for:
+
+* Dotfiles
+* Hugo for blogging
