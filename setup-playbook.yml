@@ -1,6 +1,6 @@
 ---
 - hosts: local
-  become: True
+  become: yes
   roles:
   - role: common
   - role: chrome
@@ -12,6 +12,7 @@
   - role: vscode
 
 - hosts: local
-  become: False
+  become: yes
+  become_user: "{{ ansible_user }}"
   roles:
   - role: xfce4

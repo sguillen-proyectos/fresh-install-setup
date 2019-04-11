@@ -50,6 +50,17 @@ function install_basic_packages() {
     pip install virtualenv > ${LOG_DIR}/ansible.log 2>&1
 }
 
+function xfce4_reload() {
+    cd /home/${INSTALLATION_USER}/.config/xfce4
+    if [[ ! -d xfce4-bak ]]; then
+        mv xfce4 xfce4-bak
+        killall xfconfd
+        unzip xfce4.zip
+        chown ${INSTALLATION_USER}:${INSTALLATION_USER} /home/${INSTALLATION_USER}/.config/xfce4
+        DISPLAY=:0.0 xfce4-panel -r
+    fi
+}
+
 function basic_setup() {
     mkdir -p ${LOG_DIR}
 
@@ -64,6 +75,15 @@ function basic_setup() {
 
     info "Installing Ansible in ${INSTALL_DIR}/env"
     install_ansible
+
+    read -ep 'Type username for which desktop changes will take place: ' INSTALLATION_USER
+
+    source ${INSTALL_DIR}/env
+
+    ansible-playbook -i inventory setup-playbook.yml --extra-vars ansible_user=${INSTALLATION_USER}
+
+    info "Applying xfce4 changes..."
+    sudo -u ${INSTALLATION_USER} bash -c "export INSTALLATION_USER=${INSTALLATION_USER}; $(declare -f xfce4_reload); xfce4_reload"
 
     read -ep 'Add user to sudo group? [yes/no] ' ADD_TO_SUDO
     if [[ ${ADD_TO_SUDO} == 'yes' ]]; then

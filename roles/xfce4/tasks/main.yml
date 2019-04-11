@@ -21,15 +21,3 @@
     copy:
       src: files/xfce4.zip
       dest: "/home/{{ ansible_user }}/.config/xfce4.zip"
-
-  - name: Reload xfce4 settings
-    shell: |
-      cd ~/.config
-      if [[ ! -d xfce4-bak ]]; then
-        mv xfce4 xfce4-bak
-
-        export DISPLAY=:0.0
-        killall xfconfd
-        unzip xfce4.zip
-        xfce4-panel -r
-      fi
