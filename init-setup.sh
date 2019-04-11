@@ -50,17 +50,6 @@ function install_basic_packages() {
     pip install virtualenv > ${LOG_DIR}/ansible.log 2>&1
 }
 
-function xfce4_reload() {
-    cd /home/${INSTALLATION_USER}/.config/xfce4
-    if [[ ! -d xfce4-bak ]]; then
-        mv xfce4 xfce4-bak
-        killall xfconfd
-        unzip xfce4.zip
-        chown ${INSTALLATION_USER}:${INSTALLATION_USER} /home/${INSTALLATION_USER}/.config/xfce4
-        DISPLAY=:0.0 xfce4-panel -r
-    fi
-}
-
 function basic_setup() {
     mkdir -p ${LOG_DIR}
 
@@ -78,7 +67,7 @@ function basic_setup() {
 
     read -ep 'Type username for which desktop changes will take place: ' INSTALLATION_USER
 
-    source ${INSTALL_DIR}/env
+    source ${INSTALL_DIR}/env/bin/activate
 
     ansible-playbook -i inventory setup-playbook.yml --extra-vars ansible_user=${INSTALLATION_USER}
 
@@ -101,6 +90,10 @@ function basic_setup() {
             error "Could not add ${NEW_SUDO_USER} to sudo group"
         fi
     fi
+
+    info "Installation process finished successfully!"
+    info "Run the /opt/update-desktop-layout.sh script with your normal user, DO NOT USE ROOT for that"
+    info "$ ./update-desktop-layout.sh"
 }
 
 if [[ "${UID}" != '0' ]]; then
