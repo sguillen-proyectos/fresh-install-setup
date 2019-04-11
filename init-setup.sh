@@ -91,9 +91,10 @@ function basic_setup() {
         fi
     fi
 
-    info "Installation process finished successfully!"
-    info "Run the /opt/update-desktop-layout.sh script with your normal user, DO NOT USE ROOT for that"
-    info "$ ./update-desktop-layout.sh"
+    echo -e "\e[1;31;42m Installation process finished successfully! \e[0m"
+    echo "Run the /opt/update-desktop-layout.sh script with your normal user, DO NOT USE ROOT for that."
+    echo "     $ ./update-desktop-layout.sh"
+    echo "After that, you might want to reboot your computer."
 }
 
 if [[ "${UID}" != '0' ]]; then
