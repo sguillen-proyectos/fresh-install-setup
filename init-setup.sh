@@ -68,6 +68,7 @@ function basic_setup() {
     read -ep 'Type username for which desktop changes will take place: ' INSTALLATION_USER
 
     source ${INSTALL_DIR}/env/bin/activate
+    cd ${INSTALL_DIR}
 
     ansible-playbook -i inventory setup-playbook.yml --extra-vars ansible_user=${INSTALLATION_USER}
 
