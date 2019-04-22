@@ -1,0 +1,38 @@
+- block:
+  - name: Add tmux configuration file
+    template:
+      src: templates/tmux.conf
+      dest: "/home/{{ ansible_user }}/.tmux.conf"
+      owner: "{{ ansible_user }}"
+      group: "{{ ansible_user }}"
+
+  - name: Basic configuration for vim
+    template:
+      src: templates/vimrc
+      dest: "/home/{{ ansible_user }}/.vimrc"
+      owner: "{{ ansible_user }}"
+      group: "{{ ansible_user }}"
+
+  - name: Create MOC configuration directories
+    file:
+      state: directory
+      path: "/home/{{ ansible_user }}/{{ item }}"
+      owner: "{{ ansible_user }}"
+      group: "{{ ansible_user }}"
+    loop:
+    - .moc
+    - .moc/themes
+
+  - name: Add MOC player configuration file
+    template:
+      src: templates/moc_conf
+      dest: "/home/{{ ansible_user }}/.moc/config"
+      owner: "{{ ansible_user }}"
+      group: "{{ ansible_user }}"
+
+  - name: Add MOC player configuration file
+    template:
+      src: templates/moc_black_theme
+      dest: "/home/{{ ansible_user }}/.moc/themes/black_theme"
+      owner: "{{ ansible_user }}"
+      group: "{{ ansible_user }}"
