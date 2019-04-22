@@ -51,6 +51,9 @@
       name: "{{ item }}"
       state: present
     loop:
+    - pavucontrol
+    - vlc
+    - evince
     - file-roller
     - ghex
     - gnome-font-viewer
@@ -63,8 +66,18 @@
     - meld
     - shutter
     - transmission
-    - transmission-common
-    - transmission-gtk
     - wireshark
     - inkscape
     - xchm
+
+  - name: Install pip tools
+    pip:
+      name: "{{ item }}"
+      state: present
+    loop:
+    - mycli
+    - pgcli
+    - litecli
+    - youtube-dl
+    - awscli
+    - wpm
