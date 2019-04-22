@@ -9,20 +9,6 @@
       repo: "deb https://packages.sury.org/php/ stretch main"
       filename: php7-sury
 
-  - name: Add MySQL repository key
-    apt_key:
-      data: "{{ lookup('file', 'files/mysql.gpg') }}"
-      state: present
-
-  - name: Add MySQL repositories
-    apt_repository:
-      repo: "{{ item }}"
-      state: present
-      filename: mysql
-    loop:
-    - deb http://repo.mysql.com/apt/debian/ stretch mysql-5.7
-    - deb http://repo.mysql.com/apt/debian/ stretch mysql-tools
-
   - name: Update repositories
     apt:
       update_cache: yes
