@@ -1,2 +1,5 @@
 [local]
 localhost ansible_connection=local
+
+# For remote testing
+# <remote_host> ansible_user=<remote_user> [ansible_become_pass=<remote_pass>]
