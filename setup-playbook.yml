@@ -8,6 +8,7 @@
   - role: node
   - role: docker
   - role: php7
+  - role: mysql
   - role: virtualbox
   - role: vscode
 
