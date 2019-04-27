@@ -1,7 +1,3 @@
-# TODO
-# xfce4 panels setup + plugins
-# lightdm login configuration to list users greeter-hide-users=false
----
 - block:
   - name: Install themes and icons for desktop configuration
     apt:
@@ -21,3 +17,11 @@
     copy:
       src: files/xfce4.zip
       dest: "/home/{{ ansible_user }}/.config/xfce4.zip"
+
+  - name: Display users on lightdm
+    lineinfile:
+      regex: '^#greeter-hide-users=false$'
+      line: 'greeter-hide-users=false'
+      path: /etc/lightdm/lightdm.conf
+    become: yes
+    become_user: root
