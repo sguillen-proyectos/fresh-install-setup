@@ -16,3 +16,4 @@
   become_user: "{{ ansible_user }}"
   roles:
   - role: xfce4
+  - role: dotenvs

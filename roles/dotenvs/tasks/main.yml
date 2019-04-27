@@ -13,6 +13,14 @@
       owner: "{{ ansible_user }}"
       group: "{{ ansible_user }}"
 
+  - name: Add command prompt customization
+    copy:
+      src: templates/custom_prompt.sh
+      dest: "/home/{{ ansible_user }}/.bash_aliases"
+      owner: "{{ ansible_user }}"
+      group: "{{ ansible_user }}"
+      mode: 0644
+
   - name: Create MOC configuration directories
     file:
       state: directory
