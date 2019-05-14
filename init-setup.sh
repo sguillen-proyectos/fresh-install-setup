@@ -4,15 +4,16 @@ function log() {
     time=`date "+%F %T"`
     log_level=$1
     msg=$2
-    echo "${time} - [${log_level}] - ${msg}"
+    color=$3
+    echo -e "${time} - ${color}[${log_level}]\e[0m - ${msg}"
 }
 
 function info() {
-    log INFO "$1"
+    log INFO "$1" '\e[38;5;82m'
 }
 
 function error() {
-    log ERROR "$1"
+    log ERROR "$1" '\e[31m'
 }
 
 LOG_DIR=/var/log/fresh-debian/
