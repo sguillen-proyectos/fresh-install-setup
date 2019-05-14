@@ -9,8 +9,7 @@ It is tested on Debian Stretch (my current version) and XFCE as desktop environm
 Run the `init-setup.sh` script after the fresh installation, you need to be `root` as Debian does not install `sudo` by default unless you set no password to `root`.
 
 ```
-cd /opt
-wget https://raw.githubusercontent.com/sguillen-proyectos/fresh-install-setup/master/init-setup.sh
+bash <(wget -q -O- https://raw.githubusercontent.com/sguillen-proyectos/fresh-install-setup/master/init-setup.sh)
 ```
 
 `init-setup.sh` script will add the public Debian reposistory to `/etc/apt/sources.list`, install `sudo, python-pip, python-setuptools, virtualenv` and `ansible` inside a virtualenv sandbox. After that it wil clone this repository so you can continue with the setup process.
@@ -21,5 +20,4 @@ wget https://raw.githubusercontent.com/sguillen-proyectos/fresh-install-setup/ma
 ## TODO
 Add roles for:
 
-* Dotfiles
 * Hugo for blogging
