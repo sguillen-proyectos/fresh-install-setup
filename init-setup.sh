@@ -72,9 +72,6 @@ function basic_setup() {
 
     ansible-playbook -i inventory setup-playbook.yml --extra-vars ansible_user=${INSTALLATION_USER}
 
-    info "Applying xfce4 changes..."
-    sudo -u ${INSTALLATION_USER} bash -c "export INSTALLATION_USER=${INSTALLATION_USER}; $(declare -f xfce4_reload); xfce4_reload"
-
     read -ep 'Add user to sudo group? [yes/no] ' ADD_TO_SUDO
     if [[ ${ADD_TO_SUDO} == 'yes' ]]; then
         read -ep 'Type the username to add to sudo group: ' NEW_SUDO_USER
