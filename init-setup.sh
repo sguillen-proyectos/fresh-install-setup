@@ -69,7 +69,7 @@ function basic_setup() {
     info "Installing Ansible in ${INSTALL_DIR}/env"
     install_ansible
 
-    read -ep 'Type username for which desktop changes will take place: ' INSTALLATION_USER
+    read -ep 'Type username for which changes will take place: ' INSTALLATION_USER
 
     source ${INSTALL_DIR}/env/bin/activate
     cd ${INSTALL_DIR}
