@@ -91,7 +91,7 @@ function basic_setup() {
 
     echo -e "\e[1;30;42m Installation process finished successfully! \e[0m"
     echo "Run the /opt/update-desktop-layout.sh script with your normal user, DO NOT USE ROOT for that."
-    echo "     $ ./update-desktop-layout.sh"
+    echo "     $ bash ${INSTALL_DIR}/update-desktop-layout.sh"
     echo "After that, you might want to reboot your computer."
 }
 
