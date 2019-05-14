@@ -61,6 +61,9 @@ function basic_setup() {
     install_basic_packages
 
     info "Cloning fresh-install-setup at ${INSTALL_DIR}"
+    if [[ -d $INSTALL_DIR ]]; then
+        rm -rf $INSTALL_DIR
+    fi
     git clone "${GIT_REPO}" ${INSTALL_DIR}
 
     info "Installing Ansible in ${INSTALL_DIR}/env"
