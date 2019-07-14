@@ -19,6 +19,7 @@
     - ca-certificates
     - libappindicator1
     - libappindicator3-1
+    - python-psycopg2
     - ffmpeg
     - tmux
     - moc
@@ -67,7 +68,6 @@
     - kazam
     - kupfer
     - meld
-    - shutter
     - transmission
     - wireshark
     - inkscape
