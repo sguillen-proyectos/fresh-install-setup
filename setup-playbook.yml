@@ -8,7 +8,7 @@
   - role: node
   - role: docker
   - role: php7
-  - role: mysql
+  # - role: mysql Not able to locate package, needs more research
   # - role: virtualbox Debian repository for buster not added yet :s
   - role: vscode
 
