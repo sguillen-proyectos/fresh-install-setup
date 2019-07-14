@@ -27,7 +27,7 @@ function comment_existing_repositories() {
 function add_debian_repository() {
     comment_existing_repositories
 
-    REPO='deb http://deb.debian.org/debian/ stretch main contrib non-free'
+    REPO='deb http://deb.debian.org/debian/ buster main contrib non-free'
     echo ${REPO} >> /etc/apt/sources.list
 }
 

@@ -9,7 +9,7 @@
   - role: docker
   - role: php7
   - role: mysql
-  - role: virtualbox
+  # - role: virtualbox Debian repository for buster not added yet :s
   - role: vscode
 
 - hosts: local

@@ -4,9 +4,11 @@
       url: https://www.virtualbox.org/download/oracle_vbox_2016.asc
       state: present
 
+  # Change to buster when Virtualbox supports it in its repos
+  # https://www.virtualbox.org/ticket/17878
   - name: Add Virtualbox repository
     apt_repository:
-      repo: deb http://download.virtualbox.org/virtualbox/debian stretch contrib
+      repo: deb http://download.virtualbox.org/virtualbox/debian bionic contrib
       state: present
       filename: virtualbox
 
@@ -17,5 +19,5 @@
 
   - name: Install virtualbox
     apt:
-      name: virtualbox-5.2
+      name: virtualbox-6.0
       state: present

@@ -6,7 +6,7 @@
 
   - name: Add Sury repository
     apt_repository:
-      repo: "deb https://packages.sury.org/php/ stretch main"
+      repo: "deb https://packages.sury.org/php/ buster main"
       filename: php7-sury
 
   - name: Update repositories

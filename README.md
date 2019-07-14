@@ -3,7 +3,7 @@ Fresh Debian Install Setup
 
 This repository contains the scripts and Ansible tasks that automates all the things I do after a fresh Debian installation, such as configuration, packages, desktop look and feel and others.
 
-It is tested on Debian Stretch (my current version) and XFCE as desktop environment.
+It is tested on Debian Stretch (see tag `debian9`) and Debian Buster (my current version) and XFCE as desktop environment.
 
 ## Steps
 Run the `init-setup.sh` script after the fresh installation, you need to be `root` as Debian does not install `sudo` by default unless you set no password to `root`.
