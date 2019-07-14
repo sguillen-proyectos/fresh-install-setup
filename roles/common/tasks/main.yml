@@ -10,6 +10,7 @@
     - vim
     - curl
     - dnsutils
+    - binutils
     - firmware-linux-free
     - firmware-linux-nonfree
     - firmware-misc-nonfree
@@ -31,6 +32,8 @@
     - jq
     - net-tools
     - nmap
+    - ntfs-3g
+    - xxd
 
   - name: Extra tools CLI
     apt:
