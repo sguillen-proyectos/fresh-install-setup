@@ -6,7 +6,7 @@
 
   - name: Add Docker CE repository
     apt_repository:
-      repo: deb [arch=amd64] https://download.docker.com/linux/debian stretch stable
+      repo: deb [arch=amd64] https://download.docker.com/linux/debian buster stable
       filename: docker-ce
 
   - name: Update repositories
