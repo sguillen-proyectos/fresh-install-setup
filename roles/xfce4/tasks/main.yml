@@ -12,6 +12,8 @@
     - fonts-noto-unhinted
     - numix-gtk-theme
     - numix-icon-theme
+    become: yes
+    become_user: root
 
   - name: Copy xfce4 panel configuration files
     copy:
