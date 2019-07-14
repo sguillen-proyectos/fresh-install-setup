@@ -18,6 +18,7 @@
     - apt-transport-https
     - ca-certificates
     - libappindicator1
+    - libgconf-2
     - libappindicator3-1
     - python-psycopg2
     - ffmpeg
@@ -63,6 +64,7 @@
     - gnome-font-viewer
     - gnome-system-monitor
     - gparted
+    - gimp
     - guvcview
     - hardinfo
     - kazam
