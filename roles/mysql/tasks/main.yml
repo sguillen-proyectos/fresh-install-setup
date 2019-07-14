@@ -13,6 +13,11 @@
     - deb http://repo.mysql.com/apt/debian/ buster mysql-5.7
     - deb http://repo.mysql.com/apt/debian/ buster mysql-tools
 
+  - name: Update repositories
+    apt:
+      update_cache: yes
+      cache_valid_time: 3600
+
   - name: Install MySQL 5.7 and other required packages
     apt:
       name: "{{ item }}"
