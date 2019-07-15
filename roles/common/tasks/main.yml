@@ -18,7 +18,7 @@
     - apt-transport-https
     - ca-certificates
     - libappindicator1
-    - libgconf-2
+    - libgconf-2-4
     - libappindicator3-1
     - python-psycopg2
     - ffmpeg
@@ -70,6 +70,7 @@
     - kazam
     - kupfer
     - flameshot
+    - peek
     - meld
     - transmission
     - wireshark
