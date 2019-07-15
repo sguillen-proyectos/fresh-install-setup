@@ -32,8 +32,3 @@
     - php7.2-sqlite3
     - php7.2-xml
     - php7.2-zip
-
-  - name: Install MySQL 5.7
-    apt:
-      name: mysql-server
-      state: present
