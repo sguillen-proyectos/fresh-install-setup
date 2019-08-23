@@ -32,6 +32,7 @@
     - whois
     - redshift
     - jq
+    - lynx
     - net-tools
     - nmap
     - ntfs-3g
