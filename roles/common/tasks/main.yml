@@ -34,6 +34,7 @@
     - jq
     - lynx
     - net-tools
+    - rsync
     - nmap
     - ntfs-3g
     - xxd
