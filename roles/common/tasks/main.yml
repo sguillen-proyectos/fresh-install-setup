@@ -21,6 +21,7 @@
     - libgconf-2-4
     - libappindicator3-1
     - python-psycopg2
+    - python-setuptools
     - ffmpeg
     - tmux
     - moc
@@ -30,9 +31,6 @@
     - unrar
     - unrar-free
     - whois
-    - redshift
-    - jq
-    - lynx
     - net-tools
     - rsync
     - nmap
@@ -52,6 +50,10 @@
     - ethtool
     - ipython
     - nasm
+    - lynx
+    - tig
+    - redshift
+    - jq
 
   - name: Must have desktop tools
     apt:
