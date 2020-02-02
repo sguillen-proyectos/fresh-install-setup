@@ -2,19 +2,17 @@
 - hosts: local
   become: yes
   roles:
-  - role: common
-  - role: chrome
-  - role: games
-  - role: node
-  - role: docker
-  - role: php7
-  # - role: mysql
-  # - role: virtualbox
-  - role: vscode
+  - { role: common, tags: [common] }
+  - { role: chrome, tags: [chrome] }
+  - { role: games, tags: [games] }
+  - { role: node, tags: [node] }
+  - { role: docker, tags: [docker] }
+  - { role: php7, tags: [php7] }
+  - { role: vscode, tags: [vscode] }
 
 - hosts: local
   become: yes
   become_user: "{{ ansible_user }}"
   roles:
-  - role: xfce4
-  - role: dotenvs
+  - { role: xfce4, tags: [xfce4] }
+  - { role: dotenvs, tags: [dotenvs] }

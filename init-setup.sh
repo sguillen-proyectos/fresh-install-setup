@@ -74,7 +74,7 @@ function basic_setup() {
     source ${INSTALL_DIR}/env/bin/activate
     cd ${INSTALL_DIR}
 
-    ansible-playbook -i inventory setup-playbook.yml --extra-vars ansible_user=${INSTALLATION_USER}
+    ansible-playbook -i inventory setup-playbook.yml --extra-vars ansible_user=${INSTALLATION_USER} $@
 
     read -ep 'Add user to sudo group? [yes/no] ' ADD_TO_SUDO
     if [[ ${ADD_TO_SUDO} == 'yes' ]]; then
@@ -83,11 +83,6 @@ function basic_setup() {
         if [[ $? == '0' ]]; then
             info "${NEW_SUDO_USER} added to sudo group"
             read -ep 'Do you want to reboot before continue? [yes/no] ' REBOOT_COMPUTER
-
-            if [[ ${REBOOT_COMPUTER} == 'yes' ]]; then
-                info "Rebooting machine"
-                reboot
-            fi
         else
             error "Could not add ${NEW_SUDO_USER} to sudo group"
         fi
@@ -104,4 +99,4 @@ if [[ "${UID}" != '0' ]]; then
     exit 1
 fi
 
-basic_setup
+basic_setup $@

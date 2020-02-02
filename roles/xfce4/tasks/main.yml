@@ -15,6 +15,12 @@
     become: yes
     become_user: root
 
+  - name: Make sure .config exists
+    file:
+      state: directory
+      path: "/home/{{ ansible_user }}/.config"
+      owner: "{{ ansible_user }}"
+
   - name: Copy xfce4 panel configuration files
     copy:
       src: files/xfce4.zip
