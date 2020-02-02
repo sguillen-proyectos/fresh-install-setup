@@ -37,6 +37,16 @@
     - ntfs-3g
     - xxd
 
+  - name: Install MTP utils
+    apt:
+      name: "{{ item }}"
+    loop:
+    - mtp-tools
+    - jmtpfs
+    - libmtp9
+    - libmtp-runtime
+    - libmtp-common
+
   - name: Extra tools CLI
     apt:
       name: "{{ item }}"

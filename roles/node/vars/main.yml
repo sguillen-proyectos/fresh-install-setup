@@ -1,3 +1,4 @@
 ---
 # node_version: node_8.x
-node_version: node_10.x
+# node_version: node_10.x
+node_version: node_12.x

@@ -19,11 +19,3 @@
     apt:
       name: code
       state: present
-
-  - name: Create vscode link
-    file:
-      src: /usr/share/code/bin/code
-      dest: /usr/bin/vscode
-      owner: root
-      group: root
-      state: link
