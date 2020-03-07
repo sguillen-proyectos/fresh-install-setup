@@ -91,13 +91,17 @@
     - inkscape
     - xchm
 
-  - name: Install pip tools
-    pip:
-      name: "{{ item }}"
-      state: present
-    loop:
-    - mycli
-    - litecli
-    - youtube-dl
-    - awscli
-    - wpm
+  # COMMENTED UNTIL I FIGURE OUT HOW TO INSTALL
+  # THESE TOOLS IN GLOBAL PYTHON ENVIRONMENT AND
+  # NOT THE VIRTUALENV THAT EXECUTES THIS
+  # ANSIBLE PLAYBOOK.
+  # - name: Install pip tools
+  #   pip:
+  #     name: "{{ item }}"
+  #     state: present
+  #   loop:
+  #   - mycli
+  #   - litecli
+  #   - youtube-dl
+  #   - awscli
+  #   - wpm
