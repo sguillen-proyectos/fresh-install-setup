@@ -32,6 +32,7 @@
     - unrar-free
     - whois
     - net-tools
+    - arping
     - rsync
     - nmap
     - ntfs-3g
