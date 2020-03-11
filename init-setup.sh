@@ -76,15 +76,13 @@ function basic_setup() {
 
     ansible-playbook -i inventory setup-playbook.yml --extra-vars ansible_user=${INSTALLATION_USER} $@
 
-    read -ep 'Add user to sudo group? [yes/no] ' ADD_TO_SUDO
+    read -ep "Add ${INSTALLATION_USER} user to sudo group? [yes/no] " ADD_TO_SUDO
     if [[ ${ADD_TO_SUDO} == 'yes' ]]; then
-        read -ep 'Type the username to add to sudo group: ' NEW_SUDO_USER
-        gpasswd -a ${NEW_SUDO_USER} sudo
+        gpasswd -a ${INSTALLATION_USER} sudo
         if [[ $? == '0' ]]; then
-            info "${NEW_SUDO_USER} added to sudo group"
-            read -ep 'Do you want to reboot before continue? [yes/no] ' REBOOT_COMPUTER
+            info "${INSTALLATION_USER} added to sudo group"
         else
-            error "Could not add ${NEW_SUDO_USER} to sudo group"
+            error "Could not add ${INSTALLATION_USER} to sudo group"
         fi
     fi
 
