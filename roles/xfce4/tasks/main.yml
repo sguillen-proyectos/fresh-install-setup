@@ -5,6 +5,7 @@
       state: present
     loop:
     - fonts-hack-ttf
+    - ttf-bitstream-vera
     - fonts-lyx
     - fonts-noto
     - fonts-noto-cjk
