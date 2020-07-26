@@ -65,6 +65,7 @@
     - tig
     - redshift
     - jq
+    - pwgen
 
   - name: Must have desktop tools
     apt:
