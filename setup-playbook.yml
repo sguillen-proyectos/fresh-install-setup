@@ -7,7 +7,6 @@
   - { role: games, tags: [games] }
   - { role: node, tags: [node] }
   - { role: docker, tags: [docker] }
-  - { role: php7, tags: [php7] }
   - { role: vscode, tags: [vscode] }
 
 - hosts: local
