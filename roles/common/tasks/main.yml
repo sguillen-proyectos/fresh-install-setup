@@ -21,7 +21,9 @@
     - libgconf-2-4
     - libappindicator3-1
     - python-psycopg2
+    - python3-psycopg2
     - python-setuptools
+    - python3-setuptools
     - ffmpeg
     - tmux
     - moc
