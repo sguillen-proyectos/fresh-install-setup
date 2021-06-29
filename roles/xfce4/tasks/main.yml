@@ -7,6 +7,12 @@
     - fonts-hack-ttf
     - ttf-bitstream-vera
     - fonts-lyx
+    - fonts-dejavu
+    - fonts-dejavu-extra
+    - fonts-droid
+    - fonts-freefont-ttf
+    - fonts-hack-ttf
+    - fonts-hack
     - fonts-noto
     - fonts-noto-cjk
     - fonts-noto-hinted
