@@ -5,8 +5,6 @@
       name: "{{ item }}"
       state: present
     loop:
-    - build-essential
-    - cmake
     - vim
     - curl
     - dnsutils
@@ -24,6 +22,7 @@
     - python3-psycopg2
     - python-setuptools
     - python3-setuptools
+    - gettext
     - ffmpeg
     - tmux
     - moc
@@ -36,7 +35,6 @@
     - net-tools
     - arping
     - rsync
-    - nmap
     - ntfs-3g
     - xxd
 
@@ -50,24 +48,40 @@
     - libmtp-runtime
     - libmtp-common
 
-  - name: Extra tools CLI
+  - name: Troubleshooting tools
     apt:
       name: "{{ item }}"
       state: present
     loop:
+    - nmap
     - strace
     - ltrace
     - itop
     - htop
     - atop
     - ethtool
+
+  - name: Development tools
+    apt:
+      name: "{{ item }}"
+      state: present
+    loop:
+    - build-essential
+    - cmake
     - ipython
     - nasm
-    - lynx
-    - tig
-    - redshift
     - jq
+    - tig
+
+  - name: Extra tools CLI
+    apt:
+      name: "{{ item }}"
+      state: present
+    loop:
+    - lynx
+    - redshift
     - pwgen
+    - dict
 
   - name: Must have desktop tools
     apt:
@@ -94,6 +108,7 @@
     - wireshark
     - inkscape
     - xchm
+    - zenity
 
   # COMMENTED UNTIL I FIGURE OUT HOW TO INSTALL
   # THESE TOOLS IN GLOBAL PYTHON ENVIRONMENT AND
