@@ -120,7 +120,8 @@
   #     state: present
   #   loop:
   #   - mycli
+  #   - pgcli
   #   - litecli
   #   - youtube-dl
-  #   - awscli
+  #   - yt-dlp
   #   - wpm
