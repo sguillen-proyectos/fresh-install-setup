@@ -16,6 +16,7 @@ function error() {
     log ERROR "$1" '\e[31m'
 }
 
+export DEBIAN_VERSION=${DEBIAN_VERSION:-bullseye}
 LOG_DIR=/var/log/fresh-debian/
 INSTALL_DIR=/opt/fresh-install-setup
 GIT_REPO=https://github.com/sguillen-proyectos/fresh-install-setup.git
@@ -27,7 +28,7 @@ function comment_existing_repositories() {
 function add_debian_repository() {
     comment_existing_repositories
 
-    REPO='deb http://deb.debian.org/debian/ buster main contrib non-free'
+    REPO="deb http://deb.debian.org/debian/ ${DEBIAN_VERSION} main contrib non-free"
     echo ${REPO} >> /etc/apt/sources.list
 }
 
@@ -38,17 +39,17 @@ function install_ansible() {
     fi
     virtualenv -p python3 ${INSTALL_DIR}/env
     source ${INSTALL_DIR}/env/bin/activate
-    pip install ansible >> ${LOG_DIR}/ansible.log 2>&1
+    pip install ansible 2>&1 | tee -a ${LOG_DIR}/ansible.log
 }
 
 function install_basic_packages() {
-    apt update > ${LOG_DIR}/apt.log 2>&1
+    apt update 2>&1 | tee -a ${LOG_DIR}/apt.log
 
     packages='sudo git python3-pip python3-setuptools python-pip python-setuptools'
     info "Installing ${packages} ..."
-    apt install -y ${packages} >> ${LOG_DIR}/apt.log 2>&1
+    apt install -y ${packages} 2>&1 | tee -a ${LOG_DIR}/apt.log
 
-    pip3 install virtualenv > ${LOG_DIR}/ansible.log 2>&1
+    pip3 install virtualenv 2>&1 | tee -a ${LOG_DIR}/ansible.log
 }
 
 function basic_setup() {
