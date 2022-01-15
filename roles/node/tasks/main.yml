@@ -6,7 +6,7 @@
 
   - name: Add NodeJS repository
     apt_repository:
-      repo: "deb https://deb.nodesource.com/{{ node_version }} buster main"
+      repo: "deb https://deb.nodesource.com/{{ node_version }} bullseye main"
       filename: nodejs
 
   - name: Update repositories
