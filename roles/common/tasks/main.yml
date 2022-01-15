@@ -15,10 +15,7 @@
     - linux-headers-amd64
     - apt-transport-https
     - ca-certificates
-    - libappindicator1
     - libgconf-2-4
-    - libappindicator3-1
-    - python-psycopg2
     - python3-psycopg2
     - python-setuptools
     - python3-setuptools
@@ -68,7 +65,7 @@
     loop:
     - build-essential
     - cmake
-    - ipython
+    - ipython3
     - nasm
     - jq
     - tig
