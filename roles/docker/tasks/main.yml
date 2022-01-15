@@ -6,7 +6,7 @@
 
   - name: Add Docker CE repository
     apt_repository:
-      repo: deb [arch=amd64] https://download.docker.com/linux/debian buster stable
+      repo: deb [arch=amd64] https://download.docker.com/linux/debian bullseye stable
       filename: docker-ce
 
   - name: Update repositories
@@ -31,11 +31,11 @@
 
   - name: Download docker-compose
     get_url:
-      url: https://github.com/docker/compose/releases/download/1.24.0/docker-compose-linux-x86_64
+      url: https://github.com/docker/compose/releases/download/1.29.2/docker-compose-linux-x86_64
       dest: /usr/bin/docker-compose
       mode: 0755
 
   - name: Add bash autocompletion
     get_url:
-      url: https://raw.githubusercontent.com/docker/compose/1.24.0/contrib/completion/bash/docker-compose
+      url: https://raw.githubusercontent.com/docker/compose/1.29.2/contrib/completion/bash/docker-compose
       dest: /etc/bash_completion.d/docker-compose
