@@ -18,9 +18,14 @@ bash <(wget -q -O- https://raw.githubusercontent.com/sguillen-proyectos/fresh-in
 
 
 ## Upgrade Guide
-
+Before installing a new version of the distro do the next:
+- Rename `~/.config` directory
+- Rename `~/.local` directory
+- Remove `~/.vscode` directory
+- Backup `/etc/passwd` in order to check the user and group ids when creating new users
 
 ## TODO
 Add roles for:
 
 * Hugo for blogging
+* Install Hexyl terminal hexdump color-based viewer
