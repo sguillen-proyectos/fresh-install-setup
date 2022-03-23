@@ -13,6 +13,12 @@
       dest: /usr/local/bin/kubectl
       mode: 0755
 
+  - name: Create Golang directory
+    file:
+      path: /opt/go_{{ golang_version }}
+      state: directory
+      mode: 0755
+
   - name: Download golang
     ansible.builtin.unarchive:
       src: https://go.dev/dl/go{{ golang_version }}.linux-amd64.tar.gz
