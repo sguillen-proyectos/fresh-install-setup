@@ -55,25 +55,32 @@ function install_basic_packages() {
 function basic_setup() {
     mkdir -p ${LOG_DIR}
 
-    info 'Adding public Debian repository'
-    add_debian_repository
 
-    info "Installing basic packages"
-    install_basic_packages
+    if [[ -z $LOCAL_DEVELOPMENT ]]; then
+        info 'Adding public Debian repository'
+        add_debian_repository
 
-    info "Cloning fresh-install-setup at ${INSTALL_DIR}"
-    if [[ -d $INSTALL_DIR ]]; then
-        rm -rf $INSTALL_DIR
+        info "Installing basic packages"
+        install_basic_packages
+
+        info "Cloning fresh-install-setup at ${INSTALL_DIR}"
+        if [[ -d $INSTALL_DIR ]]; then
+            rm -rf $INSTALL_DIR
+        fi
+        git clone "${GIT_REPO}" ${INSTALL_DIR}
+
+        info "Installing Ansible in ${INSTALL_DIR}/env"
+        install_ansible
     fi
-    git clone "${GIT_REPO}" ${INSTALL_DIR}
-
-    info "Installing Ansible in ${INSTALL_DIR}/env"
-    install_ansible
 
     read -ep 'Type username for which changes will take place: ' INSTALLATION_USER
 
     source ${INSTALL_DIR}/env/bin/activate
     cd ${INSTALL_DIR}
+
+    if [[ -n $LOCAL_DEVELOPMENT ]]; then
+        git pull origin master
+    fi
 
     ansible-playbook -i inventory setup-playbook.yml --extra-vars ansible_user=${INSTALLATION_USER} $@
 
