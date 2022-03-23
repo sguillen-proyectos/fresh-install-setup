@@ -48,9 +48,9 @@
       owner: "{{ ansible_user }}"
       group: "{{ ansible_user }}"
       mode: 0755
-      loop:
-        - "/home/{{ ansible_user }}/tmp"
-        - "/home/{{ ansible_user }}/tmp/go_path"
+    loop:
+      - "/home/{{ ansible_user }}/tmp"
+      - "/home/{{ ansible_user }}/tmp/go_path"
 
   - name: Add GOPATH to user's bashrc
     ansible.builtin.lineinfile:
