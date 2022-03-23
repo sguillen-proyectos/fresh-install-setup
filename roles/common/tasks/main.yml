@@ -110,6 +110,30 @@
     - gnote
     - zenity
 
+  - name: Create directory for custom bash configurations
+    file:
+      path: "/home/{{ ansible_user }}/.my-bash-confs"
+      state: directory
+      owner: "{{ ansible_user }}"
+      group: "{{ ansible_user }}"
+      mode: 0755
+
+  - name: Create loader for own bash configurations
+    copy:
+      src: templates/config-loader.sh
+      dest: "/home/{{ ansible_user }}/.config-loader.sh"
+      owner: "{{ ansible_user }}"
+      group: "{{ ansible_user }}"
+      mode: 0644
+
+  - name: Add bash configuration loader to bashrc file for user
+    ansible.builtin.lineinfile:
+      path: "/home/{{ ansible_user }}/.bashrc"
+      line: "source ~/.config-loader.sh"
+      owner: "{{ ansible_user }}"
+      group: "{{ ansible_user }}"
+
+
   # COMMENTED UNTIL I FIGURE OUT HOW TO INSTALL
   # THESE TOOLS IN GLOBAL PYTHON ENVIRONMENT AND
   # NOT THE VIRTUALENV THAT EXECUTES THIS
