@@ -31,11 +31,11 @@
 
   - name: Download docker-compose
     get_url:
-      url: https://github.com/docker/compose/releases/download/1.29.2/docker-compose-linux-x86_64
+      url: https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-linux-x86_64
       dest: /usr/bin/docker-compose
       mode: 0755
 
   - name: Add bash autocompletion
     get_url:
-      url: https://raw.githubusercontent.com/docker/compose/1.29.2/contrib/completion/bash/docker-compose
+      url: https://raw.githubusercontent.com/docker/compose/{{ docker_compose_version }}/contrib/completion/bash/docker-compose
       dest: /etc/bash_completion.d/docker-compose
