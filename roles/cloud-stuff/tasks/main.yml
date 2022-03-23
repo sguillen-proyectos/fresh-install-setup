@@ -13,6 +13,13 @@
       dest: /usr/local/bin/kubectl
       mode: 0755
 
+  - name: Add tab kubectl autocompletion
+    ansible.builtin.lineinfile:
+      path: /home/{{ ansible_user }}/.bashrc
+      line: "source <(kubectl completion bash)"
+      owner: "{{ ansible_user }}"
+      group: "{{ ansible_user }}"
+
   - name: Create Golang directory
     file:
       path: /opt/go_{{ golang_version }}
