@@ -3,7 +3,11 @@ Fresh Debian Install Setup
 
 This repository contains the scripts and Ansible tasks that automates all the things I do after a fresh Debian installation, such as configuration, packages, desktop look and feel and others.
 
-It is tested on Debian Stretch (see tag `debian9`), Debian Buster and Debian Bullseye (my current version) and XFCE as desktop environment.
+This utility works for the latest Debian version, at the time of writing, latest version is Debian Bullseye.
+
+There are tags for previous versions:
+- `debian_10.11`
+- `debian9`
 
 ## Steps
 Run the `init-setup.sh` script after the fresh installation, you need to be `root` as Debian does not install `sudo` by default unless you set no password to `root`.
