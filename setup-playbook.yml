@@ -8,6 +8,7 @@
   - { role: node, tags: [node] }
   - { role: docker, tags: [docker] }
   - { role: vscode, tags: [vscode] }
+  - { role: cloud-stuff, tags: [cloud-stuff] }
 
 - hosts: local
   become: yes

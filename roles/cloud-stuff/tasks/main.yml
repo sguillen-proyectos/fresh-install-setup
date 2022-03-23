@@ -1,0 +1,20 @@
+
+
+# https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip
+# https://go.dev/dl/go{{ golang_version }}.linux-amd64.tar.gz
+# https://github.com/gohugoio/hugo/releases/download/v{{ hugo_version }}/hugo_{{ hugo_version }}_Linux-64bit.tar.gz
+#
+
+
+- block:
+  - name: Download kubectl
+    get_url:
+      url: https://dl.k8s.io/release/v{{ kubectl_version }}/bin/linux/amd64/kubectl
+      dest: /usr/local/bin/kubectl
+      mode: 0755
+
+  - name: Download golang
+    ansible.builtin.unarchive:
+      src: https://go.dev/dl/go{{ golang_version }}.linux-amd64.tar.gz
+      dest: /opt/
+      remote_src: yes
