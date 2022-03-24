@@ -43,8 +43,20 @@
       dest: /opt/hugo.tar.gz
       mode: 0755
 
+  - name: Create hugo directory
+    file:
+      path: /opt/hugo
+      state: directory
+      mode: 0755
+
   - name: Unarchive Hugo
     ansible.builtin.unarchive:
       src: /opt/hugo.tar.gz
-      dest: /opt/
+      dest: /opt/hugo
+      remote_src: no
+
+  - name: Copy hugo binary so it can be globally executed
+    copy:
+      src: /opt/hugo/hugo
+      dest: /usr/local/bin/hugo
       remote_src: no
