@@ -22,7 +22,7 @@
   - name: Uncompress terraform
     ansible.builtin.unarchive:
       src: /opt/terraform.zip
-      dest: /opt/
+      dest: /usr/local/bin/
       remote_src: no
 
 # https://github.com/gohugoio/hugo/releases/download/v{{ hugo_version }}/hugo_{{ hugo_version }}_Linux-64bit.tar.gz
