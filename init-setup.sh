@@ -73,7 +73,11 @@ function basic_setup() {
         install_ansible
     fi
 
-    read -ep 'Type username for which changes will take place: ' INSTALLATION_USER
+    if [[ -z $INSTALLATION_USER ]]; then
+        read -ep 'Type username for which changes will take place: ' INSTALLATION_USER
+    else
+        echo "Using \"${INSTALLATION_USER}\" from INSTALLATION_USER environment variable"
+    fi
 
     source ${INSTALL_DIR}/env/bin/activate
     cd ${INSTALL_DIR}
