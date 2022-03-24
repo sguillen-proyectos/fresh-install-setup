@@ -1,4 +1,5 @@
 - block:
+  # Kubectl installation and configuration
   - name: Download kubectl
     get_url:
       url: https://dl.k8s.io/release/v{{ kubectl_version }}/bin/linux/amd64/kubectl
@@ -14,6 +15,7 @@
       owner: "{{ ansible_user }}"
       group: "{{ ansible_user }}"
 
+  # Terraform installation and configuration
   - name: Download terraform
     get_url:
       url: https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip
@@ -25,5 +27,12 @@
       dest: /usr/local/bin/
       remote_src: no
 
-# https://github.com/gohugoio/hugo/releases/download/v{{ hugo_version }}/hugo_{{ hugo_version }}_Linux-64bit.tar.gz
-#
+  - name: Add tab terraform autocompletion
+    copy:
+      dest: /home/{{ ansible_user }}/.my-bash-confs/terraform.rc
+      content: |
+        # Enable terraform autocompletion
+        complete -C /usr/local/bin/terraform terraform
+      owner: "{{ ansible_user }}"
+      group: "{{ ansible_user }}"
+
