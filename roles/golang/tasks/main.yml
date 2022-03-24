@@ -16,38 +16,34 @@
       dest: /opt/go_{{ golang_version }}
       remote_src: no
 
-#  Move all these guys to "/home/{{ ansible_user }}/.my-bash-confs"
-  # - name: Add GOROOT to global bashrc
-  #   ansible.builtin.lineinfile:
-  #     path: /etc/bash.bashrc
-  #     line: "export GOROOT=/opt/go_{{ golang_version }}/go"
+  - name: Add GOROOT to global bashrc
+    ansible.builtin.lineinfile:
+      path: /etc/bash.bashrc
+      line: "export GOROOT=/opt/go_{{ golang_version }}/go"
 
-  # - name: Add golang binaries to PATH
-  #   ansible.builtin.lineinfile:
-  #     path: /etc/bash.bashrc
-  #     line: "export PATH=$GOROOT/bin:$PATH"
+  - name: Add golang binaries to PATH
+    ansible.builtin.lineinfile:
+      path: /etc/bash.bashrc
+      line: "export PATH=$GOROOT/bin:$PATH"
 
-  # - name: Create GOPATH directory
-  #   file:
-  #     path: "{{ item }}"
-  #     state: directory
-  #     owner: "{{ ansible_user }}"
-  #     group: "{{ ansible_user }}"
-  #     mode: 0755
-  #   loop:
-  #     - "/home/{{ ansible_user }}/tmp"
-  #     - "/home/{{ ansible_user }}/tmp/go_path"
+  - name: Create GOPATH directory
+    file:
+      path: "{{ item }}"
+      state: directory
+      owner: "{{ ansible_user }}"
+      group: "{{ ansible_user }}"
+      mode: 0755
+    loop:
+      - "/home/{{ ansible_user }}/tmp"
+      - "/home/{{ ansible_user }}/tmp/go_path"
 
-  # - name: Add GOPATH to user's bashrc
-  #   ansible.builtin.lineinfile:
-  #     path: "/home/{{ ansible_user }}/.bashrc"
-  #     line: "export GOPATH=/home/{{ ansible_user }}/tmp/go_path"
-  #     owner: "{{ ansible_user }}"
-  #     group: "{{ ansible_user }}"
+  - name: Add GOPATH environment variables to user's configuration
+    copy:
+      dest: "/home/{{ ansible_user }}/.my-bash-conf/golang.rc"
+      content: |
+        # Golang setup for current user
+        export GOPATH=/home/{{ ansible_user }}/tmp/go_path
+        export PATH=${GOPATH}/bin:${PATH}
 
-  # - name: Add GOPATH binaries to user's bashrc PATH
-  #   ansible.builtin.lineinfile:
-  #     path: "/home/{{ ansible_user }}/.bashrc"
-  #     line: "export PATH=${GOPATH}/bin:${PATH}"
-  #     owner: "{{ ansible_user }}"
-  #     group: "{{ ansible_user }}"
+      owner: "{{ ansible_user }}"
+      group: "{{ ansible_user }}"
