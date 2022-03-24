@@ -1,0 +1,53 @@
+- block:
+  - name: Create Golang directory
+    file:
+      path: /opt/go_{{ golang_version }}
+      state: directory
+      mode: 0755
+
+  - name: Download Golang installer
+    get_url:
+      url: https://go.dev/dl/go{{ golang_version }}.linux-amd64.tar.gz
+      dest: /opt/go_{{ golang_version }}/go{{ golang_version }}.linux-amd64.tar.gz
+
+  - name: Unarchive Golang
+    ansible.builtin.unarchive:
+      src: /opt/go_{{ golang_version }}/go{{ golang_version }}.linux-amd64.tar.gz
+      dest: /opt/go_{{ golang_version }}
+      remote_src: no
+
+#  Move all these guys to "/home/{{ ansible_user }}/.my-bash-confs"
+  # - name: Add GOROOT to global bashrc
+  #   ansible.builtin.lineinfile:
+  #     path: /etc/bash.bashrc
+  #     line: "export GOROOT=/opt/go_{{ golang_version }}/go"
+
+  # - name: Add golang binaries to PATH
+  #   ansible.builtin.lineinfile:
+  #     path: /etc/bash.bashrc
+  #     line: "export PATH=$GOROOT/bin:$PATH"
+
+  # - name: Create GOPATH directory
+  #   file:
+  #     path: "{{ item }}"
+  #     state: directory
+  #     owner: "{{ ansible_user }}"
+  #     group: "{{ ansible_user }}"
+  #     mode: 0755
+  #   loop:
+  #     - "/home/{{ ansible_user }}/tmp"
+  #     - "/home/{{ ansible_user }}/tmp/go_path"
+
+  # - name: Add GOPATH to user's bashrc
+  #   ansible.builtin.lineinfile:
+  #     path: "/home/{{ ansible_user }}/.bashrc"
+  #     line: "export GOPATH=/home/{{ ansible_user }}/tmp/go_path"
+  #     owner: "{{ ansible_user }}"
+  #     group: "{{ ansible_user }}"
+
+  # - name: Add GOPATH binaries to user's bashrc PATH
+  #   ansible.builtin.lineinfile:
+  #     path: "/home/{{ ansible_user }}/.bashrc"
+  #     line: "export PATH=${GOPATH}/bin:${PATH}"
+  #     owner: "{{ ansible_user }}"
+  #     group: "{{ ansible_user }}"

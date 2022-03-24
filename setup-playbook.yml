@@ -6,6 +6,7 @@
   - { role: chrome, tags: [chrome] }
   - { role: games, tags: [games] }
   - { role: node, tags: [node] }
+  - { role: golang, tags: [golang] }
   - { role: docker, tags: [docker] }
   - { role: vscode, tags: [vscode] }
   - { role: cloud-stuff, tags: [cloud-stuff] }
