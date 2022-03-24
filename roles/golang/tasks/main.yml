@@ -39,7 +39,7 @@
 
   - name: Add GOPATH environment variables to user's configuration
     copy:
-      dest: "/home/{{ ansible_user }}/.my-bash-conf/golang.rc"
+      dest: "/home/{{ ansible_user }}/.my-bash-confs/golang.rc"
       content: |
         # Golang setup for current user
         export GOPATH=/home/{{ ansible_user }}/tmp/go_path
