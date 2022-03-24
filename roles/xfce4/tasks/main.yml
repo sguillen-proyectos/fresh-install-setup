@@ -27,7 +27,6 @@
       state: directory
       owner: "{{ ansible_user }}"
     with_items:
-    - /home/{{ ansible_user }}/tmp
     - /home/{{ ansible_user }}/tmp/wallpapers
 
   - name: Copy wallpaper file

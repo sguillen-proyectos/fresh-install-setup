@@ -109,6 +109,14 @@
     - gnote
     - zenity
 
+  - name: Create user tmp directory
+    file:
+      path: "/home/{{ ansible_user }}/tmp"
+      state: directory
+      owner: "{{ ansible_user }}"
+      group: "{{ ansible_user }}"
+      mode: 0755
+
   - name: Create directory for custom bash configurations
     file:
       path: "/home/{{ ansible_user }}/.my-bash-confs"
@@ -132,6 +140,20 @@
       owner: "{{ ansible_user }}"
       group: "{{ ansible_user }}"
 
+  - name: Add miscellaneous shell configuration for different utilities
+    copy:
+      dest: /home/{{ ansible_user }}/.my-bash-confs/00-common.rc
+      content: |
+        # Created by roles/common/tasks/main.yml
+
+        # This is used by mycli and pgcli utilities to show
+        # tables in a better format
+        export LESS="-SRXF"
+
+        # This is used by lynx browser to set default configuration
+        alias lynx='lynx -vikeys -accept_all_cookies -image_links'
+      owner: "{{ ansible_user }}"
+      group: "{{ ansible_user }}"
 
   # COMMENTED UNTIL I FIGURE OUT HOW TO INSTALL
   # THESE TOOLS IN GLOBAL PYTHON ENVIRONMENT AND

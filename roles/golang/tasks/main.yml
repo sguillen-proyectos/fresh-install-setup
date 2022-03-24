@@ -34,7 +34,6 @@
       group: "{{ ansible_user }}"
       mode: 0755
     loop:
-      - "/home/{{ ansible_user }}/tmp"
       - "/home/{{ ansible_user }}/tmp/go_path"
 
   - name: Add GOPATH environment variables to user's configuration
