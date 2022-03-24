@@ -10,7 +10,7 @@
       dest: /home/{{ ansible_user }}/.my-bash-confs/kubectl.rc
       content: |
         # Enable kubectl autocompletion
-        "source <(kubectl completion bash)"
+        source <(kubectl completion bash)
       owner: "{{ ansible_user }}"
       group: "{{ ansible_user }}"
 
