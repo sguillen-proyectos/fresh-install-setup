@@ -1,11 +1,3 @@
-
-
-# https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip
-# https://go.dev/dl/go{{ golang_version }}.linux-amd64.tar.gz
-# https://github.com/gohugoio/hugo/releases/download/v{{ hugo_version }}/hugo_{{ hugo_version }}_Linux-64bit.tar.gz
-#
-
-
 - block:
   - name: Download kubectl
     get_url:
@@ -14,55 +6,24 @@
       mode: 0755
 
   - name: Add tab kubectl autocompletion
-    ansible.builtin.lineinfile:
-      path: /home/{{ ansible_user }}/.bashrc
-      line: "source <(kubectl completion bash)"
+    copy:
+      dest: /home/{{ ansible_user }}/.my-bash-confs/kubectl.rc
+      content: |
+        # Enable kubectl autocompletion
+        "source <(kubectl completion bash)"
       owner: "{{ ansible_user }}"
       group: "{{ ansible_user }}"
 
-  - name: Create Golang directory
-    file:
-      path: /opt/go_{{ golang_version }}
-      state: directory
-      mode: 0755
+  - name: Download terraform
+    get_url:
+      url: https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip
+      dest: /opt/terraform.zip
 
-  - name: Download and unarchive Golang
+  - name: Uncompress terraform
     ansible.builtin.unarchive:
-      src: https://go.dev/dl/go{{ golang_version }}.linux-amd64.tar.gz
-      dest: /opt/go_{{ golang_version }}
-      remote_src: yes
+      src: /opt/terraform.zip
+      dest: /opt/
+      remote_src: no
 
-  - name: Add GOROOT to global bashrc
-    ansible.builtin.lineinfile:
-      path: /etc/bash.bashrc
-      line: "export GOROOT=/opt/go_{{ golang_version }}/go"
-
-  - name: Add golang binaries to PATH
-    ansible.builtin.lineinfile:
-      path: /etc/bash.bashrc
-      line: "export PATH=$GOROOT/bin:$PATH"
-
-  - name: Create GOPATH directory
-    file:
-      path: "{{ item }}"
-      state: directory
-      owner: "{{ ansible_user }}"
-      group: "{{ ansible_user }}"
-      mode: 0755
-    loop:
-      - "/home/{{ ansible_user }}/tmp"
-      - "/home/{{ ansible_user }}/tmp/go_path"
-
-  - name: Add GOPATH to user's bashrc
-    ansible.builtin.lineinfile:
-      path: "/home/{{ ansible_user }}/.bashrc"
-      line: "export GOPATH=/home/{{ ansible_user }}/tmp/go_path"
-      owner: "{{ ansible_user }}"
-      group: "{{ ansible_user }}"
-
-  - name: Add GOPATH binaries to user's bashrc PATH
-    ansible.builtin.lineinfile:
-      path: "/home/{{ ansible_user }}/.bashrc"
-      line: "export PATH=${GOPATH}/bin:${PATH}"
-      owner: "{{ ansible_user }}"
-      group: "{{ ansible_user }}"
+# https://github.com/gohugoio/hugo/releases/download/v{{ hugo_version }}/hugo_{{ hugo_version }}_Linux-64bit.tar.gz
+#
