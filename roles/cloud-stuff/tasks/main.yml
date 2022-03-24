@@ -36,3 +36,15 @@
       owner: "{{ ansible_user }}"
       group: "{{ ansible_user }}"
 
+  # Hugo installation and configuration
+  - name: Download Hugo
+    get_url:
+      url: https://github.com/gohugoio/hugo/releases/download/v{{ hugo_version }}/hugo_{{ hugo_version }}_Linux-64bit.tar.gz
+      dest: /opt/hugo.tar.gz
+      mode: 0755
+
+  - name: Unarchive Hugo
+    ansible.builtin.unarchive:
+      src: /opt/hugo.tar.gz
+      dest: /opt/
+      remote_src: no
