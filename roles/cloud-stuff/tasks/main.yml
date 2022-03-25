@@ -97,3 +97,10 @@
         complete -C '/usr/local/bin/aws_completer' aws
       owner: "{{ ansible_user }}"
       group: "{{ ansible_user }}"
+
+  # SOPS download
+  - name: Download SOPS
+    get_url:
+      url: https://github.com/mozilla/sops/releases/download/v{{ sops_version }}/sops-v{{ sops_version }}.linux.amd64
+      dest: /usr/local/bin/sops
+      mode: 0755

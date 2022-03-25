@@ -9,3 +9,6 @@ hugo_version: "0.95.0"
 
 # Kubernetes
 kubectl_version: "1.23.5"
+
+# SOPS
+sops_version: "3.7.2"
