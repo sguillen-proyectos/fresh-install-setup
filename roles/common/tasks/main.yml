@@ -158,6 +158,10 @@
   - name: Install hexyl
     include_tasks: hexyl.yml
 
+  - name: Install glow
+    include_tasks: glow.yml
+
+
   # COMMENTED UNTIL I FIGURE OUT HOW TO INSTALL
   # THESE TOOLS IN GLOBAL PYTHON ENVIRONMENT AND
   # NOT THE VIRTUALENV THAT EXECUTES THIS

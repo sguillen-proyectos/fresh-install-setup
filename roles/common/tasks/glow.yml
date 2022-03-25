@@ -1,0 +1,25 @@
+---
+- name: Download Glow
+  get_url:
+    url: "https://github.com/charmbracelet/glow/releases/download/v{{ glow_version }}/glow_{{ glow_version }}_linux_x86_64.tar.gz"
+    dest: /opt/glow.tar.gz
+    mode: 0755
+
+- name: Create Glow directory
+  file:
+    path: /opt/glow
+    state: directory
+    mode: 0755
+
+- name: Unarchive Glow
+  ansible.builtin.unarchive:
+    src: /opt/glow.tar.gz
+    dest: /opt/glow
+    creates: /opt/glow/glow
+    remote_src: no
+
+- name: Copy Glow binary to global path
+  copy:
+    src: /opt/glow/glow
+    dest: /usr/local/bin/glow
+    mode: 0755
