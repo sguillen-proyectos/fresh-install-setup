@@ -2,5 +2,5 @@
 # node_version: node_8.x
 # node_version: node_10.x
 # node_version: node_12.x
-node_version: node_16.x
+node_version: node_18.x
 debian_version: bullseye
