@@ -1,0 +1,21 @@
+---
+# Terraform installation and configuration
+- name: Download terraform
+  get_url:
+    url: https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip
+    dest: /opt/terraform.zip
+
+- name: Uncompress terraform
+  ansible.builtin.unarchive:
+    src: /opt/terraform.zip
+    dest: /usr/local/bin/
+    remote_src: no
+
+- name: Add tab terraform autocompletion
+  copy:
+    dest: /home/{{ ansible_user }}/.my-bash-confs/terraform.rc
+    content: |
+      # Enable terraform autocompletion
+      complete -C /usr/local/bin/terraform terraform
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"

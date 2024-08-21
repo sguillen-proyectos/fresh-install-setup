@@ -1,0 +1,16 @@
+---
+# Kubectl installation and configuration
+- name: Download kubectl
+  get_url:
+    url: https://dl.k8s.io/release/v{{ kubectl_version }}/bin/linux/amd64/kubectl
+    dest: /usr/local/bin/kubectl
+    mode: 0755
+
+- name: Add tab kubectl autocompletion
+  copy:
+    dest: /home/{{ ansible_user }}/.my-bash-confs/kubectl.rc
+    content: |
+      # Enable kubectl autocompletion
+      source <(kubectl completion bash)
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"

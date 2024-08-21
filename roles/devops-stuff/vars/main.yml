@@ -1,0 +1,19 @@
+# Terraform
+# terraform_version: "1.9.4"
+terraform_version: ""
+
+# Hugo
+# hugo_version: "0.131.0"
+hugo_version: ""
+
+# Kubernetes
+# kubectl_version: "1.30.3"
+kubectl_version: ""
+
+# SOPS
+# sops_version: "3.9.0"
+sops_version: ""
+
+# assume-role
+# assume_role_version: "0.3.2"
+assume_role_version: ""

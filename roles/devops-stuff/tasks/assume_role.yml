@@ -1,0 +1,7 @@
+---
+# assume-role download
+- name: Download assume-role
+  get_url:
+    url: https://github.com/remind101/assume-role/releases/download/{{ assume_role_version }}/assume-role-Linux
+    dest: /usr/local/bin/assume-role
+    mode: 0755

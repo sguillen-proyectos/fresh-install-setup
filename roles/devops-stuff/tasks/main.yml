@@ -1,0 +1,30 @@
+- block:
+  - name: Check variables
+    ansible.builtin.assert:
+      that:
+      - terraform_version != ''
+      - hugo_version != ''
+      - kubectl_version != ''
+      - sops_version != ''
+      - assume_role_version != ''
+      quiet: true
+
+
+  - name: Install assume role
+    include_tasks: assume_role.yml
+
+  - name: Install awscli
+    include_tasks: awscli.yml
+
+  - name: Install hugo
+    include_tasks: hugo.yml
+
+  - name: Install kubectl
+    include_tasks: kubectl.yml
+
+  - name: Install sops
+    include_tasks: sops.yml
+
+  - name: Install terraform
+    include_tasks: terraform.yml
+

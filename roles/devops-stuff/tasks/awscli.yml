@@ -1,0 +1,36 @@
+---
+# awscli download and configuration (installation should be manual)
+- name: Download awscliv2 installer
+  get_url:
+    url: https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
+    dest: /opt/awscli-exe-linux-x86_64.zip
+
+- name: Unarchive awscliv2 installer
+  ansible.builtin.unarchive:
+    src: /opt/awscli-exe-linux-x86_64.zip
+    dest: /opt/
+    remote_src: no
+    creates: '/opt/aws'
+    mode: 0755
+
+- name: Run the installer
+  command:
+  args:
+    cmd: /opt/aws/install
+    creates: /usr/local/bin/aws
+  become: true
+  register: aws_install
+
+- name: Show installer output
+  debug:
+    var: aws_install
+    verbosity: 2
+
+- name: Add tab awscliv2 autocompletion
+  copy:
+    dest: /home/{{ ansible_user }}/.my-bash-confs/awscliv2.rc
+    content: |
+      # Enable awscliv2 autocompletion
+      complete -C '/usr/local/bin/aws_completer' aws
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"

@@ -1,0 +1,26 @@
+---
+# Hugo installation and configuration
+- name: Download Hugo
+  get_url:
+    url: https://github.com/gohugoio/hugo/releases/download/v{{ hugo_version }}/hugo_{{ hugo_version }}_Linux-64bit.tar.gz
+    dest: /opt/hugo.tar.gz
+    mode: 0755
+
+- name: Create hugo directory
+  file:
+    path: /opt/hugo
+    state: directory
+    mode: 0755
+
+- name: Unarchive Hugo
+  ansible.builtin.unarchive:
+    src: /opt/hugo.tar.gz
+    dest: /opt/hugo
+    remote_src: no
+
+- name: Copy hugo binary so it can be globally executed
+  copy:
+    src: /opt/hugo/hugo
+    dest: /usr/local/bin/hugo
+    mode: 0755
+    remote_src: no
