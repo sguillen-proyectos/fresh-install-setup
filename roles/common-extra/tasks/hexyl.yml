@@ -23,3 +23,8 @@
     src: /opt/hexyl/hexyl-v{{ hexyl_version }}-x86_64-unknown-linux-gnu/hexyl
     dest: /usr/local/bin/hexyl
     mode: 0755
+
+- name: Delete Hexyl directory
+  file:
+    path: /opt/hexyl
+    state: absent

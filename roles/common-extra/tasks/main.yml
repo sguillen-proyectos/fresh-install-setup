@@ -1,0 +1,22 @@
+---
+#
+# This role is used to install common utilities that are not
+# part of any repository, and need to be installed by downloading them manually
+
+- block:
+  - name: Check variables
+    ansible.builtin.assert:
+      that:
+      - hexyl_version != ''
+      - glow_version != ''
+      - bat_version != ''
+      quiet: true
+
+  - name: Install hexyl
+    include_tasks: hexyl.yml
+
+  - name: Install glow
+    include_tasks: glow.yml
+
+  - name: Install bat
+    include_tasks: bat.yml

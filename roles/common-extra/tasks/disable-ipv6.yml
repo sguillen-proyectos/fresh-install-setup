@@ -1,0 +1,16 @@
+---
+- name: Copy ipv6-enable
+    copy:
+      src: templates/ipv6-enable
+      dest: "/usr/local/bin/ipv6-enable"
+      owner: "{{ ansible_user }}"
+      group: "{{ ansible_user }}"
+      mode: 0755
+
+- name: Copy ipv6-disable
+    copy:
+      src: templates/ipv6-disable
+      dest: "/usr/local/bin/ipv6-disable"
+      owner: "{{ ansible_user }}"
+      group: "{{ ansible_user }}"
+      mode: 0755

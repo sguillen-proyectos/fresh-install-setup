@@ -46,7 +46,7 @@
     - libmtp-runtime
     - libmtp-common
 
-  - name: Troubleshooting tools
+  - name: Troubleshooting and debugging tools
     apt:
       name: "{{ item }}"
       state: present
@@ -155,13 +155,6 @@
       owner: "{{ ansible_user }}"
       group: "{{ ansible_user }}"
 
-  - name: Install hexyl
-    include_tasks: hexyl.yml
-
-  - name: Install glow
-    include_tasks: glow.yml
-
-
   # COMMENTED UNTIL I FIGURE OUT HOW TO INSTALL
   # THESE TOOLS IN GLOBAL PYTHON ENVIRONMENT AND
   # NOT THE VIRTUALENV THAT EXECUTES THIS
@@ -177,3 +170,5 @@
   #   - youtube-dl
   #   - yt-dlp
   #   - wpm
+  #   - tabulate
+  #   - sshuttle

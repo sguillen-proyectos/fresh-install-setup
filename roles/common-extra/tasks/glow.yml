@@ -23,3 +23,8 @@
     src: /opt/glow/glow
     dest: /usr/local/bin/glow
     mode: 0755
+
+- name: Delete Glow directory
+  file:
+    path: /opt/glow
+    state: abasent
