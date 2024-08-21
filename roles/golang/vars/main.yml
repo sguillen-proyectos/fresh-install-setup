@@ -1,2 +1,4 @@
 # Golang
-golang_version: "1.18"
+# golang_version: "1.22"
+golang_version: ""
+bat_version: ""

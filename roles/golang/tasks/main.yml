@@ -1,4 +1,10 @@
 - block:
+  - name: Check variables
+    ansible.builtin.assert:
+      that:
+      - golang_version != ''
+      quiet: true
+
   - name: Create Golang directory
     file:
       path: /opt/go_{{ golang_version }}

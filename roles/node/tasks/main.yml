@@ -1,4 +1,11 @@
 - block:
+  - name: Check variables
+    ansible.builtin.assert:
+      that:
+      - node_version != ''
+      - debian_version != ''
+      quiet: true
+
   - name: Add NodeJS apt-key
     apt_key:
       url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
