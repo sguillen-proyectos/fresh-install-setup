@@ -1,0 +1,21 @@
+# general variables
+debian_version: bookworm
+
+# variables for common-extra
+hexyl_version: "0.14.0"
+glow_version:  "1.5.1"
+bat_version:   "0.24.0"
+hugo_version:  "0.133.0"
+
+# variables for devops-stuff
+docker_compose_version: "2.29.2"
+terraform_version:      "1.9.5"
+kubectl_version:        "1.30.3"
+sops_version:           "3.9.0"
+assume_role_version:    "0.3.2"
+
+# nodejs
+node_version: node_20.x
+
+# golang
+golang_version: "1.22"

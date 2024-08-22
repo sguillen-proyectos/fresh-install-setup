@@ -1,6 +1,8 @@
 ---
 - hosts: local
   become: yes
+  vars_files:
+    - ./app_versions.yml
   roles:
   - { role: common, tags: [common] }
   - { role: common-extra, tags: [common-extra] }
