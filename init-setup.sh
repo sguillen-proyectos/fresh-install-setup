@@ -16,7 +16,7 @@ function error() {
     log ERROR "$1" '\e[31m'
 }
 
-export DEBIAN_VERSION=${DEBIAN_VERSION:-bullseye}
+export DEBIAN_VERSION=${DEBIAN_VERSION:-bookworm}
 LOG_DIR=/var/log/fresh-debian/
 INSTALL_DIR=/opt/fresh-install-setup
 GIT_REPO=https://github.com/sguillen-proyectos/fresh-install-setup.git
