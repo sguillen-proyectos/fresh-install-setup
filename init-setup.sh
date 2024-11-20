@@ -37,8 +37,10 @@ function install_ansible() {
         error "Cannot find the ${INSTALL_DIR} directory"
         exit 1
     fi
+    info "Activating virtualenv for ansible installation"
     virtualenv -p python3 ${INSTALL_DIR}/env
     source ${INSTALL_DIR}/env/bin/activate
+    info "Installing ansible"
     pip install ansible 2>&1 | tee -a ${LOG_DIR}/ansible.log
 }
 
@@ -49,7 +51,8 @@ function install_basic_packages() {
     info "Installing ${packages} ..."
     apt install -y ${packages} 2>&1 | tee -a ${LOG_DIR}/apt.log
 
-    pip3 install virtualenv 2>&1 | tee -a ${LOG_DIR}/ansible.log
+    info "Installing virtualenv"
+    pip3 install virtualenv --break-system-packages 2>&1 | tee -a ${LOG_DIR}/ansible.log
 }
 
 function basic_setup() {
