@@ -7,14 +7,19 @@ function log() {
     msg=$2
     color=$3
     echo -e "${time} - ${color}[${log_level}]\e[0m - ${msg}"
+    set -x
 }
 
 function info() {
+    set +x
     log INFO "$1" '\e[38;5;82m'
+    set -x
 }
 
 function error() {
+    set +x
     log ERROR "$1" '\e[31m'
+    set -x
 }
 
 export DEBIAN_VERSION=${DEBIAN_VERSION:-bookworm}
