@@ -34,7 +34,7 @@ function comment_existing_repositories() {
 function add_debian_repository() {
     comment_existing_repositories
 
-    REPO="deb http://deb.debian.org/debian/ ${DEBIAN_VERSION} main contrib non-free"
+    REPO="deb http://deb.debian.org/debian/ ${DEBIAN_VERSION} main contrib non-free non-free-firmware"
     echo ${REPO} >> /etc/apt/sources.list
 }
 
