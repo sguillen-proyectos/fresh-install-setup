@@ -1,4 +1,5 @@
 #!/bin/bash
+set -ex
 
 function log() {
     time=`date "+%F %T"`
@@ -45,7 +46,6 @@ function install_ansible() {
 }
 
 function install_basic_packages() {
-    set -ex
     apt update 2>&1 | tee -a ${LOG_DIR}/apt.log
 
     packages='sudo git python3-pip python3-setuptools'
@@ -54,8 +54,6 @@ function install_basic_packages() {
 
     info "Installing virtualenv"
     pip3 install virtualenv --break-system-packages 2>&1 | tee -a ${LOG_DIR}/ansible.log
-
-    set +e
 }
 
 function basic_setup() {
