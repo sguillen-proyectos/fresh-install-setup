@@ -45,7 +45,7 @@ function install_ansible() {
 function install_basic_packages() {
     apt update 2>&1 | tee -a ${LOG_DIR}/apt.log
 
-    packages='sudo git python3-pip python3-setuptools python-pip-whl python-setuptools'
+    packages='sudo git python3-pip python3-setuptools'
     info "Installing ${packages} ..."
     apt install -y ${packages} 2>&1 | tee -a ${LOG_DIR}/apt.log
 
