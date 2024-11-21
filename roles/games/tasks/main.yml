@@ -6,8 +6,9 @@
     loop:
     - armagetronad
     - dosbox
-    - higan
     - pcsxr
     # - wine
     # - wine32
     # - wine64
+
+  # TODO: install higan from nightly release from github
