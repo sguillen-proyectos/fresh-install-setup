@@ -1,7 +1,7 @@
 ---
 - name: Download Glow
   get_url:
-    url: "https://github.com/charmbracelet/glow/releases/download/v{{ glow_version }}/glow_linux_x86_64.tar.gz"
+    url: "https://github.com/charmbracelet/glow/releases/download/v{{ glow_version }}/glow_{{ glow_version }}_linux_x86_64.tar.gz"
     dest: /opt/glow.tar.gz
     mode: 0755
 
