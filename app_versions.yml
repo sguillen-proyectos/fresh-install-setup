@@ -15,7 +15,7 @@ sops_version:           "3.9.0"
 assume_role_version:    "0.3.2"
 
 # nodejs
-node_version: node_20.x
+node_version: node_22.x
 
 # golang
-golang_version: "1.22"
+golang_version: "1.23.3"
