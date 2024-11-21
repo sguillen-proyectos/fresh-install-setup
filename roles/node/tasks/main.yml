@@ -13,7 +13,7 @@
 
   - name: Add NodeJS repository
     apt_repository:
-      repo: "deb https://deb.nodesource.com/{{ node_version }} {{ debian_version }} main"
+      repo: "deb https://deb.nodesource.com/{{ node_version }} nodistro main"
       filename: nodejs
 
   - name: Update repositories
