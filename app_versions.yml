@@ -8,7 +8,6 @@ bat_version:   "0.24.0"
 hugo_version:  "0.133.0"
 
 # variables for devops-stuff
-docker_compose_version: "2.29.2"
 terraform_version:      "1.9.5"
 kubectl_version:        "1.30.6"
 sops_version:           "3.9.0"
