@@ -18,8 +18,6 @@
     - ca-certificates
     - libgconf-2-4
     - python3-psycopg2
-    - python-setuptools
-    - python3-setuptools
     - gettext
     - ffmpeg
     - tmux
