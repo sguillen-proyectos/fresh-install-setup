@@ -27,4 +27,4 @@
 - name: Delete Glow directory
   file:
     path: /opt/glow
-    state: abasent
+    state: absent
