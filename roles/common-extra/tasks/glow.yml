@@ -20,7 +20,7 @@
 
 - name: Copy Glow binary to global path
   copy:
-    src: /opt/glow/glow
+    src: /opt/glow/glow_{{ glow_version }}_Linux_x86_64
     dest: /usr/local/bin/glow
     mode: 0755
 
