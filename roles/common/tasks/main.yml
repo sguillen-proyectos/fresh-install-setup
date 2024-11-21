@@ -52,7 +52,6 @@
     - nmap
     - strace
     - ltrace
-    - itop
     - htop
     - atop
     - ethtool
@@ -64,7 +63,6 @@
     loop:
     - build-essential
     - cmake
-    - ipython3
     - nasm
     - jq
     - tig
