@@ -8,6 +8,6 @@
     - dosbox
     - higan
     - pcsxr
-    - wine
+    # - wine
     # - wine32
-    - wine64
+    # - wine64
