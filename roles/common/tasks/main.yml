@@ -55,6 +55,7 @@
     - htop
     - atop
     - ethtool
+    - sysstat # This installs iostat
 
   - name: Development tools
     apt:
