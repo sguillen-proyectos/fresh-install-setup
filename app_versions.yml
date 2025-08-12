@@ -1,5 +1,5 @@
 # general variables
-debian_version: bookworm
+debian_version: trixie
 
 # variables for common-extra
 hexyl_version: "0.14.0"
