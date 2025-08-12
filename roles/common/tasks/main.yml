@@ -16,7 +16,6 @@
     - linux-headers-amd64
     - apt-transport-https
     - ca-certificates
-    - libgconf-2-4
     - python3-psycopg2
     - gettext
     - ffmpeg
