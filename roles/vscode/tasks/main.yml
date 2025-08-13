@@ -1,12 +1,16 @@
 - block:
+  # https://code.visualstudio.com/docs/setup/linux
   - name: Add VSCode key
-    apt_key:
+    ansible.builtin.get_url:
       url: https://packages.microsoft.com/keys/microsoft.asc
-      state: present
+      dest: /etc/apt/trusted.gpg.d/microsoft.asc
+      owner: root
+      group: root
+      mode: '0644'
 
   - name: Add VSCode repository
     apt_repository:
-      repo: deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
+      repo: deb [arch=amd64] https://packages.microsoft.com/repos/code stable main
       state: present
       filename: vscode
 

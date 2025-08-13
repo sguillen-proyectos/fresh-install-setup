@@ -1,8 +1,11 @@
 - block:
-  - name: Add Docker CE apt key
-    apt_key:
+  - name: Add Docker key
+    ansible.builtin.get_url:
       url: https://download.docker.com/linux/debian/gpg
-      state: present
+      dest: /etc/apt/trusted.gpg.d/docker.asc
+      owner: root
+      group: root
+      mode: '0644'
 
   - name: Add Docker CE repository
     apt_repository:
