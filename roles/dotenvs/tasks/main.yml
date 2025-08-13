@@ -37,6 +37,7 @@
       dest: "/home/{{ ansible_user }}/.moc/config"
       owner: "{{ ansible_user }}"
       group: "{{ ansible_user }}"
+      mode: "0600" # newer versions require this files to have group set to zero
 
   - name: Add MOC player configuration file
     template:
