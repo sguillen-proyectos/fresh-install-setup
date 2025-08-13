@@ -24,6 +24,7 @@ bash <(wget -q -O- https://raw.githubusercontent.com/sguillen-proyectos/fresh-in
 
 ## Upgrade Guide
 Before installing a new version of the distro do the next:
+- **IMPORTANT!!** Update the file `app_versions.yml` with the proper values
 - Rename `~/.config` directory
 - Rename `~/.local` directory
 - Remove `~/.vscode` directory
