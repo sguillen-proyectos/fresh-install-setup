@@ -2,15 +2,15 @@
 debian_version: trixie
 
 # variables for common-extra
-hexyl_version: "0.14.0"
-glow_version:  "2.0.0"
-bat_version:   "0.24.0"
-hugo_version:  "0.133.0"
+hexyl_version: "0.16.0"
+glow_version:  "2.1.1"
+bat_version:   "0.25.0"
+hugo_version:  "0.148.2"
 
 # variables for devops-stuff
-terraform_version:      "1.9.5"
-kubectl_version:        "1.30.6"
-sops_version:           "3.9.0"
+terraform_version:      "1.12.2"
+kubectl_version:        "1.33.3"
+sops_version:           "3.10.2"
 assume_role_version:    "0.3.2"
 
 # nodejs
