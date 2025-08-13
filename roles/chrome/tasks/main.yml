@@ -1,9 +1,15 @@
 - block:
   # From: https://www.google.com/linuxrepositories/
-  - name: Add Google key to apt
-    apt_key:
-      url: https://dl.google.com/linux/linux_signing_key.pub
-      state: present
+  - ansible.builtin.get_url:
+    url: https://dl.google.com/linux/linux_signing_key.pub
+    dest: /etc/apt/trusted.gpg.d/google.asc
+
+  - name: Change permissions
+    file:
+      path: /etc/apt/trusted.gpg.d/google.asc
+      owner: root
+      group: root
+      mode: '0644'
 
   - name: Add Chrome apt repository
     apt_repository:
