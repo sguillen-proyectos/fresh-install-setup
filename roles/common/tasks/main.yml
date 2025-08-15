@@ -10,9 +10,6 @@
     - dnsutils
     - binutils
     - psmisc
-    - firmware-linux-free
-    - firmware-linux-nonfree
-    - firmware-misc-nonfree
     - linux-headers-amd64
     - apt-transport-https
     - ca-certificates

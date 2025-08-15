@@ -1,0 +1,16 @@
+- block:
+  - name: Install free firmware
+    apt:
+      name: "{{ item }}"
+      state: present
+    loop:
+    - firmware-linux-free
+
+  - name: Install non-free firmware
+    apt:
+      name: "{{ item }}"
+      state: present
+    loop:
+    - firmware-linux-nonfree
+    - firmware-misc-nonfree
+    when: install_non_free == "yes"

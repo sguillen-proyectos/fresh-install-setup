@@ -3,7 +3,11 @@
   become: yes
   vars_files:
     - ./app_versions.yml
+  vars:
+    install_non_free: "{{ lookup('ansible.builtin.env', 'INSTALL_NON_FREE', default='yes') }}"
+
   roles:
+  - { role: kernel, tags: [kernel] }
   - { role: common, tags: [common] }
   - { role: common-extra, tags: [common-extra] }
   - { role: chrome, tags: [chrome] }
