@@ -13,6 +13,29 @@
       owner: "{{ ansible_user }}"
       group: "{{ ansible_user }}"
 
+  - name: Add tmux rates plugin
+    template:
+      src: templates/tmux_rates.sh
+      dest: "/home/{{ ansible_user }}/.local/bin/tmux_rates.sh"
+      owner: "{{ ansible_user }}"
+      group: "{{ ansible_user }}"
+      mode: 0644
+
+  - name: Add tmux get_rates.sh
+    template:
+      src: templates/tmux_get_rates.sh
+      dest: "/home/{{ ansible_user }}/.local/bin/tmux_get_rates.sh"
+      owner: "{{ ansible_user }}"
+      group: "{{ ansible_user }}"
+      mode: 0644
+
+  - name: Add tmux get rates crontab
+    cron:
+      name: get rates for tmux
+      user: "{{ ansible_user }}"
+      job: "/home/{{ ansible_user }}/.local/bin/tmux_get_rates.sh"
+      minute: "*/15"
+
   - name: Add command prompt customization
     copy:
       src: templates/custom_prompt.sh
