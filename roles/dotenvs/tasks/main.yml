@@ -19,7 +19,7 @@
       dest: "/home/{{ ansible_user }}/.local/bin/tmux_rates.sh"
       owner: "{{ ansible_user }}"
       group: "{{ ansible_user }}"
-      mode: 0644
+      mode: 0755
 
   - name: Add tmux get_rates.sh
     template:
@@ -27,7 +27,7 @@
       dest: "/home/{{ ansible_user }}/.local/bin/tmux_get_rates.sh"
       owner: "{{ ansible_user }}"
       group: "{{ ansible_user }}"
-      mode: 0644
+      mode: 0755
 
   - name: Add tmux get rates crontab
     cron:
