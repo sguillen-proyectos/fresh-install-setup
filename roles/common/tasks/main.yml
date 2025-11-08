@@ -29,6 +29,7 @@
     - rsync
     - ntfs-3g
     - xxd
+    - xclip
 
   - name: Install MTP utils
     apt:
