@@ -7,8 +7,8 @@ fi
 
 json=$(cat /tmp/tmuxrates.json)
 
-buy=$(echo "$json" | jq -r '.buyPrice')
-sell=$(echo "$json" | jq -r '.sellPrice')
+buy=$(echo "$json" | jq -r '.buyAveragePrice')
+sell=$(echo "$json" | jq -r '.sellAveragePrice')
 
 printf "USDT: 🟢%.2f 🔴%.2f" "$buy" "$sell"
 
