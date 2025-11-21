@@ -7,9 +7,54 @@
     - armagetronad
     - dosbox
     - pcsxr
-    # - wine
-    # - wine32
-    # - wine64
+
+  - name: Make sure dosbox c unit exists
+    file:
+      state: directory
+      path: "/home/{{ ansible_user }}/.dosbox-c/{{ item }}"
+      owner: "{{ ansible_user }}"
+      group: "{{ ansible_user }}"
+    loop:
+    - "/"
+    - pre2
+
+  - name: Copy dosbox games
+    copy:
+      src: "files/{{ item }}"
+      dest: "/home/{{ ansible_user }}/.dosbox-c/{{ item }}"
+      owner: "{{ ansible_user }}"
+      group: "{{ ansible_user }}"
+    loop:
+      - preh2.zip
+      - prince2.zip
+
+  - name: Find file matching pattern
+    find:
+      paths: "/home/{{ ansible_user }}/.dosbox/"
+      patterns: "*.conf"
+      file_type: file
+    register: found_files
+
+  - name: Add mount operation for dosbox
+    lineinfile:
+      path: "{{ found_files.files[0].path }}"
+      line: "mount c /home/{{ ansible_user }}/.dosbox-c"
+    when: found_files.files | length > 0
+
+  - name: Unzip prince2.zip
+    unarchive:
+      src: "/home/{{ ansible_user }}/.dosbox-c/prince2.zip"
+      dest: "/home/{{ ansible_user }}/.dosbox-c/"
+      owner: "{{ ansible_user }}"
+      group: "{{ ansible_user }}"
+
+  - name: Unzip pre2.zip
+    unarchive:
+      src: "/home/{{ ansible_user }}/.dosbox-c/preh2.zip"
+      dest: "/home/{{ ansible_user }}/.dosbox-c/pre2"
+      owner: "{{ ansible_user }}"
+      group: "{{ ansible_user }}"
+
 
   # TODO: install higan from nightly release from github
   # TODO: install pcsx2  from nightly build appimage
