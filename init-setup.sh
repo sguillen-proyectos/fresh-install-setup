@@ -19,7 +19,7 @@ function error() {
 
 export DEBIAN_VERSION=${DEBIAN_VERSION:-trixie}
 LOG_DIR=/var/log/fresh-debian/
-INSTALL_DIR=/opt/fresh-install-setup
+INSTALL_DIR=${INSTALL_DIR:-/opt/fresh-install-setup}
 GIT_REPO=https://github.com/sguillen-proyectos/fresh-install-setup.git
 
 function comment_existing_repositories() {
