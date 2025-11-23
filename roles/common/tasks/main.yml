@@ -26,6 +26,7 @@
     - whois
     - net-tools
     - arping
+    - sshpass
     - rsync
     - ntfs-3g
     - xxd
