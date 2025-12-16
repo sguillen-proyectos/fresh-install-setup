@@ -31,6 +31,7 @@
     - ntfs-3g
     - xxd
     - xclip
+    - sqlite3
 
   - name: Install MTP utils
     apt:
